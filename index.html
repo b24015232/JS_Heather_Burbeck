@@ -1,13 +1,22 @@
 <!DOCTYPE HTML>
 <link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
 
 <head>
     <h1> TP1 </h1>
 </head>
 
 <body>
-    <text id=arrayInt> </text>
-    <text id="comment"> </text>
-    <script src="script.js"></script>
+    <button id="liveDataButton"> Afficher les données en direct </button>
+    <button id="dataHistoryButton"> Afficher l'historique des données </button>
+    <br>
+    <section id="dataHistory">
+        <text id="historyText"> cc </text>
+    </section>
+
+    <section id="liveData">
+        <text aria-live='polite' id=arrayInt> </text>
+        <text aria-live='polite' role="alert" id="comment"> </text>
+    </section>
 
 </body>

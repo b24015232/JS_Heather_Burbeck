@@ -6,19 +6,43 @@ function getRandomInt(min, max) {
 var A_arrayInt = []; // Déclaration du tableau des entiers
 var O_arrayIntZone = document.getElementById("arrayInt"); // Récupération de l'ID de la balise qui contiendra le tableau
 var O_arrayTextZone = document.getElementById("comment"); // Récupération de l'ID de la balise qui conteindra le text 
-var I_i = 0;
+var O_liveDataButton = document.getElementById("liveDataButton");
+var O_historyDataButton = document.getElementById("dataHistoryButton");
+var O_historyDataZone = document.getElementById("dataHistory");
+var O_liveDataZone = document.getElementById("liveData");
+var O_historyDataText = document.getElementById("historyText");
+var I_j = 0;
 // Cette fonction ajoute un entier puis l'affiche dans la balise jusqu'a 20 intérations. 
+
 function addRandomNumbersToArray() {
-    if (I_i < 20) {
+    let I_i = 0;
+    while (I_i < 20) {
         A_arrayInt.push(getRandomInt(-10, 40))
-        O_arrayIntZone.textContent = A_arrayInt[I_i]
-        changeTextDisplay(I_i) // la fonction changeTextDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
-        changeStyleDisplay(I_i) // la fonction changeStyleDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
-        I_i++;
+        I_i++
+    }
+}
+
+function displayLiveData() {
+    let I_j = 0;
+    if (I_j < 20) {
+        O_arrayIntZone.textContent = A_arrayInt[I_j];
+        console.log('fheufeiurhfierhbfierbfiuerhbf');
+        console.log(A_arrayInt);
+        changeTextDisplay(I_j); // la fonction changeTextDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
+        changeStyleDisplay(I_j); // la fonction changeStyleDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
+        I_j++;
     } else {
         clearInterval(); // Arret de la boucle de setInterval(). 
     }
+}
 
+function displayDataHistory() {
+    let I_y = 0;
+    let test = " ";
+    while (I_y < 20) {
+        O_historyDataText.textContent = test;
+        I_y++;
+    }
 }
 
 // Cette fonction change l'attribut "Class" en fonction de la valeur du tableau. Il prend en argument un itérateur. 
@@ -37,18 +61,32 @@ function changeStyleDisplay(I_y) {
 // Cette fonction change le contenu de la balise "comment". 
 function changeTextDisplay(I_y) {
     if (A_arrayInt[I_y] < 0) {
-        O_arrayTextZone.textContent = "Brrrrrrr, un peu froid ce matin, mets ta cagoule !"
+        O_arrayTextZone.textContent = "Brrrrrrr, un peu froid ce matin, mets ta cagoule !";
     } else if (A_arrayInt[I_y] > 30) {
-        O_arrayTextZone.textContent = "Caliente ! Vamos a la playa, ho hoho hoho !!"
+        O_arrayTextZone.textContent = "Caliente ! Vamos a la playa, ho hoho hoho !!";
     }
     else {
-        O_arrayTextZone.textContent = " "
+        O_arrayTextZone.textContent = " ";
     }
 }
 
+/*
+O_historyDataZone.hidden = false;
+O_liveDataZone.hidden = false;
+O_historyDataButton.addEventListener("click", function () {
+    O_historyDataZone.hidden = !O_historyDataZone.hidden;
+})
+
+
+O_liveDataButton.addEventListener("click", function () {
+    O_liveDataZone.hidden = !O_liveDataZone.hidden;
+})
+*/
+
 
 // Intervalle de 2 seconde définie entre l'affichage des nombres dans le tableau
-setInterval(addRandomNumbersToArray, 2000)
-
+addRandomNumbersToArray();
+setInterval(displayLiveData(), 2000);
+displayDataHistory();
 
 
