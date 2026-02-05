@@ -21,27 +21,31 @@ function addRandomNumbersToArray() {
         I_i++
     }
 }
-
+var I = 0;
 function displayLiveData() {
-    let I_j = 0;
-    if (I_j < 20) {
-        O_arrayIntZone.textContent = A_arrayInt[I_j];
-        console.log('fheufeiurhfierhbfierbfiuerhbf');
+    if (I < 20) {
+        O_arrayIntZone.textContent = A_arrayInt[I];
         console.log(A_arrayInt);
-        changeTextDisplay(I_j); // la fonction changeTextDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
-        changeStyleDisplay(I_j); // la fonction changeStyleDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
-        I_j++;
+        changeTextDisplay(I); // la fonction changeTextDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
+        changeStyleDisplay(I); // la fonction changeStyleDisplay est appelée, et prend en argument l'itérateur de la fonction addRamdomNumbersToArray()
+        I += 1
+        console.log(I);
     } else {
         clearInterval(); // Arret de la boucle de setInterval(). 
     }
-}
 
+
+}
+var I_y = 0;
+var A_arrayHistory = [];
 function displayDataHistory() {
-    let I_y = 0;
-    let test = " ";
-    while (I_y < 20) {
-        O_historyDataText.textContent = test;
-        I_y++;
+    if (I_y < 20) {
+        A_arrayHistory.push(A_arrayInt[I_y]);
+        console.log(A_arrayHistory)
+        O_historyDataText.textContent = A_arrayHistory;
+        I_y += 1;
+    } else {
+        clearInterval();
     }
 }
 
@@ -70,7 +74,7 @@ function changeTextDisplay(I_y) {
     }
 }
 
-/*
+
 O_historyDataZone.hidden = false;
 O_liveDataZone.hidden = false;
 O_historyDataButton.addEventListener("click", function () {
@@ -81,12 +85,12 @@ O_historyDataButton.addEventListener("click", function () {
 O_liveDataButton.addEventListener("click", function () {
     O_liveDataZone.hidden = !O_liveDataZone.hidden;
 })
-*/
+
 
 
 // Intervalle de 2 seconde définie entre l'affichage des nombres dans le tableau
 addRandomNumbersToArray();
-setInterval(displayLiveData(), 2000);
-displayDataHistory();
+setInterval(displayLiveData, 2000);
+setInterval(displayDataHistory, 2000)
 
 
